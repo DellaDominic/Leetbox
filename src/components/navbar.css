@@ -2,7 +2,7 @@
   width: 100%;
   position: fixed;
   top: 0;
-  border-bottom: 1px solid #dbdce6;
+  border-bottom: 4px dotted #dbdce6;
   z-index: 1000;
   background-color: #fff;
 }
@@ -14,10 +14,12 @@
 }
 
 .nav-name {
-  color: #696e9b;
+  /* color: #696e9b; */
+  color: black;
   font-size: 24px;
   font-weight: bold;
-  font-family: 'inter', sans-serif;
+  /* font-family: 'inter', sans-serif; */
+  font-family: 'Manrope', sans-serif;
   text-decoration: none;
 }
 
@@ -26,12 +28,15 @@
   gap: 10px;
 }
 .nav-links a {
-  color: #696e9b;
-  font-size: 14px;
+  /* color: #696e9b; */
+  color: black;
+  font-size: 16px;
   letter-spacing: 1.2px;
-  font-family: 'inter', sans-serif;
+  /* font-family: 'inter', sans-serif; */
+  font-family: 'Manrope', sans-serif;
   text-decoration: none;
-
+  font-weight: bold;
+  color: #000;
   display: flex;
   gap: 6px;
 }
@@ -45,12 +50,17 @@
 
 .nav-item a:hover {
   color: #000;
-  background: #f1f1f6;
+  /* background: #f1f1f6; */
+  background: #e5ffd2;
 }
 .nav-item:hover {
-  background: #f1f1f6;
+  /* background: #f1f1f6; */
+  background: #e5ffd2;
+  font-weight: bold;
 }
 .nav-item.active {
-  background: #f1f1f6;
+  /* background: #f1f1f6; */
+  background: #e5ffd2;
   color: #000;
+  border: 2px dashed #000;
 }

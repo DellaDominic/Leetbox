@@ -1,6 +1,25 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 200px;
+}
+
 .heading-leetbox {
-  color: #696e9b;
+  color: black;
+  padding: 8px 16px;
+  border: 4px solid #000;
+  box-shadow:
+    /* black 0px 0px 0px 2px inset, */
+    /* rgb(255, 255, 255) 10px -10px 0px -3px, */ black
+    8px -8px;
   font-size: 36px;
+  rotate: -2deg;
+  background-color: #e5ffd2;
+  width: fit-content;
+}
+.sub-title p {
+  padding-bottom: 8px;
 }
 
 h1 {
@@ -10,20 +29,182 @@ h1 {
 }
 
 .sub-title {
-  font-size: 14px;
-  color: #7e819a;
+  font-size: 18px;
+  text-transform: capitalize;
+  letter-spacing: 1.2px;
+  margin-top: 3rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
 }
 
 .home-header {
   margin-top: 15px;
-  /* margin-left: px; */
   margin-bottom: 50px;
 }
 
 .due-banner {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  border-radius: 5px;
+  background-color: #ffb7b7;
+  padding: 30px 50px;
+  border-radius: 20px;
+  border: 4px dashed #000;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 1.2px;
+  text-transform: capitalize;
+  width: 20rem;
+  height: 15rem;
+  text-align: center;
+  rotate: 8deg;
+  transform-style: preserve-3d;
+  transition: rotate 0.3s ease;
+}
+
+.due-banner:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border: 4px dashed black;
+  border-radius: 20px;
+  z-index: -1;
+  background-color: #ffe8be;
+  transform: translateZ(-1px) rotate(-15deg);
+}
+
+.due-banner:hover {
+  rotate: 0deg;
+}
+
+.due-banner p {
+  margin-top: 15px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.due-banner .date {
+  font-size: 12px;
+  rotate: -10deg;
+  margin-top: 8px;
+  box-shadow: black 4px -4px;
+}
+
+.leitner-boxes {
+  display: flex;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.box-content {
+  width: 120px;
+  height: 120px;
+  border: 4px solid #000;
+
+  box-shadow: black 8px -8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: #000;
+}
+.last-box {
+  background-color: #e5ffd2;
+  border: 4px solid #000;
+}
+
+.sub-heading {
+  font-size: 14px;
+  margin-bottom: 24px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  margin-left: 20px;
+  text-transform: uppercase;
+}
+
+.due-banner .due-count {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding-top: 2px;
+  display: inline-block;
+}
+
+.due-box {
+  background-color: #ffb7b7;
+  border: 4px solid #000;
+}
+
+.box-label {
+  font-size: 12px;
+  font-family: 'Gloria Hallelujah', cursive;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.box-count {
+  font-size: 30px;
+  color: #000;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.add-or-browse-section {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.dashed-section {
+  border: 4px dashed #dbdce6;
+  padding: 20px 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  width: 100%;
+  height: fit-content;
+  border-radius: 8px;
+  display: flex;
+}
+
+.dashed-section span,
+.dashed-section span {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+}
+
+.dashed-section p,
+.dashed-section p {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 14px;
+  margin-top: -6px;
+  color: #dbdce6;
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashed-section,
+.dashed-section {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.icon {
+  margin-right: 18px;
+  background: #e5ffd2;
+  border-radius: 4px;
   border: 2px solid #000;
+  padding: 8px;
+  width: 2.5rem;
+  height: 2.5rem;
 }

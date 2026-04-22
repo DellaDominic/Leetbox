@@ -6,5 +6,29 @@
 
 body {
   background: #fff;
-  /* background: #707599; */
+}
+
+/* Highlight Styling for most browsers */
+::selection {
+  background: #f7dd7d; /* Custom background color */
+  color: #000000; /* Custom text color */
+}
+
+/* Specific highlight styling for Firefox */
+::-moz-selection {
+  background: #f7dd7d;
+  color: #000000;
+}
+
+.highlight {
+  background: #f7dd7d;
+  color: #000000;
+  width: fit-content;
+  padding: 0 2px;
+}
+
+.highlight-red {
+  background: #ffb7b7;
+  color: #000000;
+  width: fit-content;
 }

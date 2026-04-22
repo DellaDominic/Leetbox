@@ -5,17 +5,17 @@ import { Home, BookOpen, Plus, LayoutGrid } from 'lucide-react';
 const Navbar = () => {
   const location = useLocation();
   const navItems = [
-    { label: 'Home', path: '/', icon: <Home size={15} /> },
-    { label: 'Study', path: '/study', icon: <BookOpen size={15} /> },
-    { label: 'Add', path: '/add', icon: <Plus size={15} /> },
-    { label: 'Cards', path: '/cards', icon: <LayoutGrid size={15} /> },
+    { label: 'Home', path: '/', icon: <Home size={20} /> },
+    { label: 'Study', path: '/study', icon: <BookOpen size={20} /> },
+    { label: 'Add', path: '/add', icon: <Plus size={20} /> },
+    { label: 'Cards', path: '/cards', icon: <LayoutGrid size={20} /> },
   ];
 
   return (
     <nav className="navbar-container">
       <div className="navbar">
         <div>
-          <NavLink to="/" className="nav-name">
+          <NavLink to="/" className="nav-name highlight">
             LeetBox.
           </NavLink>
         </div>
