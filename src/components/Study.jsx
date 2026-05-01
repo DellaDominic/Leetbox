@@ -1,7 +1,9 @@
+import PageHeader from './PageHeader';
+
 const Study = () => {
   return (
     <div>
-      <h1>Study Page</h1>
+      <PageHeader heading="Study" />
       {/* Study page content goes here */}
     </div>
   );

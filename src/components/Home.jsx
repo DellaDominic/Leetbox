@@ -4,11 +4,16 @@ import { BookOpen, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const isDue = true; // to-do: Placeholder for due cards logic
-
   const total = Object.values(BOX_INTERVALS).reduce((acc, { count }) => {
     return acc + count;
   }, 0);
+
+  const totalDue = Object.values(BOX_INTERVALS).reduce(
+    (acc, { isDue, count }) => {
+      return isDue ? acc + count : acc;
+    },
+    0,
+  );
 
   return (
     <div className="home-container">
@@ -29,14 +34,14 @@ const Home = () => {
           </div>
         </div>
         {/* right is due note section */}
-        {isDue && (
+        {totalDue > 0 && (
           <div className="due-banner">
             <h4 className="highlight date">
               {new Date().toLocaleDateString()}
             </h4>
             <p>
-              You have <span className="due-count highlight">3</span> cards due
-              for review today!
+              You have <span className="due-count highlight">{totalDue}</span>{' '}
+              cards due for review today!
             </p>
           </div>
         )}
@@ -57,7 +62,7 @@ const Home = () => {
               <p className={`box-label ${isDue ? 'highlight' : ''}`}>
                 Box{' '}
                 {number === '7'
-                  ? '- Mastered!'
+                  ? `${number}- Mastered!`
                   : ` ${number} ${isDue ? '- Due Today!' : `- ${reviewDays} d`}`}
               </p>
               {/* <p>{label}</p> */}

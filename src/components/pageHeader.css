@@ -1,0 +1,38 @@
+.page-header-section {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  /* border-bottom: 2px solid #dbdce6; */
+  /* border-bottom: 2px solid black; */
+}
+
+/* old header styles */
+
+/* 
+.page-header-section h1 {
+  color: black;
+  padding: 0px 10px 6px;
+  border: 2px solid #000;
+  box-shadow:
+    white -6px -6px inset,
+    #e5ffd2 -8px -8px;
+  font-size: 24px;
+  background-color: #e5ffd2;
+  text-transform: capitalize;
+  width: 100%;
+  text-align: center;
+} */
+
+.page-header-section h1 {
+  color: black;
+  padding: 8px 16px;
+  border: 3px solid #000;
+  box-shadow:
+    /* black 0px 0px 0px 2px inset, */
+    /* rgb(255, 255, 255) 10px -10px 0px -3px, */ black
+    6px -6px;
+  font-size: 24px;
+  /* rotate: -2deg; */
+  background-color: #e5ffd2;
+  width: fit-content;
+}

@@ -1,0 +1,78 @@
+.add-card-container {
+  /* border: 1px solid black; */
+  /* width: 100%; */
+  margin-bottom: 50px;
+}
+
+.inline-form-group {
+  display: flex;
+  /* gap: 10rem; */
+  justify-content: space-between;
+}
+
+.form-group {
+  padding: 10px 0;
+  /* border: 2px solid black; */
+  margin-bottom: 10px;
+  /* display: flex; */
+  /* gap: 20px; */
+}
+
+.form-group label {
+  font-family: 'Gloria Hallelujah';
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+form input,
+form select,
+form textarea {
+  height: 45px;
+  width: 25rem;
+  /* border-radius: 20px; */
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+/* form input:hover,
+form select:hover,
+form textarea:hover,
+form input:focus-within,
+form select:focus-within,
+form textarea:focus-within {
+  border-color: red;
+} */
+
+form ::placeholder {
+  color: #dbdce6;
+  font-size: 16px;
+}
+
+form textarea {
+  height: 10rem;
+  width: 100%;
+}
+
+.form-group span {
+  color: #dbdce6;
+}
+
+.add-card-container button {
+  height: 3rem;
+  width: 8rem;
+  font-weight: bold;
+  border: 2px dashed #000;
+  border-radius: 20px;
+  background-color: #f7dd7d;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-card-container button:hover {
+  /* background: #f1f1f6; */
+  background: #e5ffd2;
+}

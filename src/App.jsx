@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { saveCard, getNextReviewDate } from './utils/helper';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Study from './components/Study';
@@ -14,7 +15,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/study" element={<Study />} />
-          <Route path="/add" element={<AddCard />} />
+          <Route
+            path="/add"
+            element={
+              <AddCard
+                saveCard={saveCard}
+                getNextReviewDate={getNextReviewDate}
+              />
+            }
+          />
           <Route path="/cards" element={<Cards />} />
         </Routes>
       </main>
