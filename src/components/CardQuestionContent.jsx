@@ -7,13 +7,15 @@ const CardQuestionContent = ({ card }) => {
   return (
     <div className="card-question">
       <div className="content-header">
-        <div>
-          {card.tags.map((tag) => (
-            <div className="tag-chip" key={tag}>
-              {tag}
-            </div>
-          ))}
-        </div>
+        {card.tags.length > 0 && (
+          <div>
+            {card.tags.map((tag) => (
+              <div className="tag-chip" key={tag}>
+                {tag || 'No-tag'}
+              </div>
+            ))}
+          </div>
+        )}
         <div>
           <div className={`date ${isDue ? 'highlight-red' : 'highlight'}`}>
             Next Review:{' '}
