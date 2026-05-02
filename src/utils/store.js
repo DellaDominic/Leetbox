@@ -1,7 +1,7 @@
 import { openDB } from 'idb';
 
 const DB_NAME = 'flashcards-db';
-const STORE_NAME = 'cards';
+export const STORE_NAME = 'cards';
 
 export async function initDB() {
   return openDB(DB_NAME, 1, {

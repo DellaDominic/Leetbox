@@ -26,7 +26,7 @@ const FlashcardItem = ({ openIds, onToggle, card }) => {
           <a className="header-icon link" href={card.link} target="_blank">
             <ExternalLink />
           </a>
-          <Link className="header-icon edit" to="/add">
+          <Link className="header-icon edit" to={`/edit/${card.id}`}>
             <SquarePen />
           </Link>
           <span className="header-icon delete">

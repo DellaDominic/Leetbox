@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import './addCard.css';
 import PageHeader from './PageHeader';
+import { useNavigate } from 'react-router-dom';
 
-const AddCard = ({ saveCard, getNextReviewDate }) => {
+const AddCard = ({ saveCard, getNextReviewDate, existingCard }) => {
   const clearFormState = {
     title: '',
     link: '',
     difficulty: '',
     tags: '',
     problem: '',
-    solution: '',
+    approach: '',
+    code: '',
     complexity: '',
     mistakes: '',
     nextReview: '',
@@ -17,20 +19,44 @@ const AddCard = ({ saveCard, getNextReviewDate }) => {
     id: '',
     box: '',
   };
-  const [form, setForm] = useState(clearFormState);
+  const isEditMode = Boolean(existingCard);
+  const navigate = useNavigate();
+  const [form, setForm] = useState(
+    isEditMode
+      ? { ...existingCard, tags: existingCard.tags.join(', ') }
+      : clearFormState,
+  );
+  // useEffect(() => {
+  //   if (existingCard) {
+  //     setForm({ // to-do - uncomment and learn in detail about this error
+  //       ...existingCard,
+  //       tags: existingCard.tags.join(', '),
+  //     });
+  //   }
+  // }, [existingCard]);
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const card = {
+    const updatedCard = {
       ...form,
-      tags: form.tags.split(',').map((tag) => tag.trim()),
-      id: Date.now(),
-      box: 1,
-      createdOn: new Date().toISOString(),
-      nextReview: getNextReviewDate(1),
+      tags: form.tags
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter(Boolean),
     };
-    console.log({ card });
-    await saveCard(card);
+
+    if (!isEditMode) {
+      updatedCard.id = Date.now();
+      updatedCard.box = 1;
+      updatedCard.createdOn = new Date().toISOString();
+      updatedCard.nextReview = getNextReviewDate(1);
+    }
+
+    console.log({ updatedCard });
+    await saveCard(updatedCard);
+    if (isEditMode) {
+      navigate('/cards');
+    }
     setForm(clearFormState);
   };
   const handleChange = (e) => {
@@ -101,12 +127,21 @@ const AddCard = ({ saveCard, getNextReviewDate }) => {
           ></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="solution">Solution</label>
+          <label htmlFor="approach">Approach</label>
           <textarea
-            name="solution"
-            value={form.solution}
+            name="approach"
+            value={form.approach}
             onChange={handleChange}
-            placeholder="Explain the approach and add code & other links ..."
+            placeholder="Explain the intuition, approach & other links ..."
+          ></textarea>
+        </div>
+        <div className="form-group">
+          <label htmlFor="code">Code</label>
+          <textarea
+            name="code"
+            value={form.code}
+            onChange={handleChange}
+            placeholder="Add / paste your javascript code here..."
           ></textarea>
         </div>
         <div className="form-group">
@@ -128,7 +163,9 @@ const AddCard = ({ saveCard, getNextReviewDate }) => {
           ></textarea>
         </div>
 
-        <button type="submit">Add to Box 1</button>
+        <button type="submit">
+          {isEditMode ? 'Update Card' : 'Add to Box 1'}
+        </button>
       </form>
     </div>
   );

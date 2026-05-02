@@ -1,4 +1,4 @@
-import { initDB } from './store';
+import { initDB, STORE_NAME } from './store';
 
 /* constant the determines the review intervals for each box in the Leitner system */
 
@@ -15,18 +15,22 @@ export const BOX_INTERVALS = {
   7: { count: 0, reviewDays: 64, label: 'Every 64 Days', isDue: false },
 };
 
-/* Key for localStorage to store flashcards */
-export const STORAGE_KEY = 'leetbox_cards';
-
-/* Save cards to indexedDB via idb */
+/* Save and update existing cards via put to indexedDB via idb */
 export async function saveCard(card) {
   const db = await initDB();
-  await db.put('cards', card);
+  await db.put(STORE_NAME, card);
 }
 
 export async function getAllCards() {
   const db = await initDB();
-  return db.getAll('cards');
+  return db.getAll(STORE_NAME);
+}
+
+export async function getCardById(id) {
+  const db = await initDB();
+  const card = await db.get(STORE_NAME, id);
+  console.log({ card });
+  return card;
 }
 
 // returns the next review date based on the box number

@@ -150,6 +150,9 @@
   color: #000;
 }
 
+.header-icon:link {
+  color: #000;
+}
 .due {
   font-family: 'Gloria Hallelujah';
   color: #ff6b6b;

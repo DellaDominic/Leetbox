@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Study from './components/Study';
 import Cards from './components/Cards';
 import AddCard from './components/AddCard';
+import EditCard from './components/EditCard';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               />
             }
           />
+          <Route path="/edit/:id" element={<EditCard />} />
           <Route path="/cards" element={<Cards />} />
         </Routes>
       </main>
