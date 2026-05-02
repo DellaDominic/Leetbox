@@ -72,3 +72,15 @@ body {
 
   background-size: 24px 24px; /* The size of the grid squares */
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #000;
+}
