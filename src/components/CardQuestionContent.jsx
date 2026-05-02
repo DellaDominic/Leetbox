@@ -1,4 +1,4 @@
-import { formatDate, getIsDue } from '../utils/helper';
+import { formatDate, getIsDue, getNextReviewDate } from '../utils/helper';
 import './cardContent.css';
 
 const CardQuestionContent = ({ card }) => {
@@ -16,7 +16,8 @@ const CardQuestionContent = ({ card }) => {
         </div>
         <div>
           <div className={`date ${isDue ? 'highlight-red' : 'highlight'}`}>
-            Next Review: {isDue ? 'today!' : formatDate(card.nextReview)}
+            Next Review:{' '}
+            {isDue ? 'today!' : formatDate(getNextReviewDate(card.box || 1))}
           </div>
         </div>
       </div>
