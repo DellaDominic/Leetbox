@@ -29,12 +29,23 @@ form input,
 form select,
 form textarea {
   height: 45px;
-  width: 25rem;
+  width: 35rem;
   /* border-radius: 20px; */
   padding: 8px;
   font-size: 16px;
   border: 2px solid #000;
   border-radius: 10px;
+  box-shadow: 0 0 10px #f7dd7d;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  /* border: 2px solid #f7dd7d; */
+  box-shadow: 0 0 10px #e5ffd2;
+
+  outline: none; /* Removes the default blue glow */
+  /* Optional: if you want a red glow instead of a solid border */
 }
 
 /* form input:hover,

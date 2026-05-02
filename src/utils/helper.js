@@ -62,3 +62,7 @@ export const getNextReviewDate = (boxNumber) => {
 export const formatDate = (date) => {
   return new Date(date).toLocaleDateString();
 };
+// to-do change this logic
+export function getIsDue(box) {
+  return box === 2;
+}

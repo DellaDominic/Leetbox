@@ -32,3 +32,24 @@ body {
   color: #000000;
   width: fit-content;
 }
+
+.dotted-background {
+  /* Set the background color (paper color) */
+  background-color: #fff;
+
+  /* Create the dots using a radial gradient */
+  /* '1px' is the radius of the dot, #ccd1d1 is the dot color */
+  background-image: radial-gradient(#ccd1d1 1px, transparent 1px);
+
+  /* background-size controls the spacing between dots (e.g., 20px) */
+  background-size: 20px 20px;
+}
+
+.parched-notebook {
+  /* A soft, aged paper color */
+  background-color: #fffdfa;
+
+  /* Semi-transparent dots so they blend with the paper color */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  background-size: 25px 25px;
+}

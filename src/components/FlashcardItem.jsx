@@ -5,47 +5,60 @@ import {
   Trash2,
   ChevronDown,
   ChevronUp,
+  CircleAlert,
 } from 'lucide-react';
-import { formatDate } from '../utils/helper';
+import { getIsDue } from '../utils/helper';
+import { Link } from 'react-router-dom';
+import CardSolutionContent from './CardSolutionContent';
+import CardQuestionContent from './CardQuestionContent';
 
 const FlashcardItem = ({ openIds, onToggle, card }) => {
+  const isOpen = openIds.includes(card.id);
+  const isDue = getIsDue(card.box || 1);
+
   return (
     <div className="accordion">
       <div
-        className={`accordion-header ${openIds.includes(card.id) ? 'header-open' : ''}`}
+        className={`accordion-header ${isOpen ? 'header-open' : ''} ${isDue ? 'due-header' : ''}`}
       >
         <div className="accordion-header-left">
-          <span>{card.title}</span>
-          <span style={{ cursor: 'pointer' }}>
+          <span className="box-number">Box {card.box || 1}</span>
+          <span className="card-title">{card.title}</span>
+          <a className="header-icon link" href={card.link} target="_blank">
             <ExternalLink />
-          </span>
-          <span style={{ cursor: 'pointer' }}>
+          </a>
+          <Link className="header-icon edit" to="/add">
             <SquarePen />
-          </span>
-          <span style={{ cursor: 'pointer' }}>
+          </Link>
+          <span className="header-icon delete">
             <Trash2 />
           </span>
         </div>
         <div className="accordion-header-right">
-          <span className="difficulty-chip" style={{ cursor: 'pointer' }}>
+          {isDue && (
+            <span className="due">
+              {/* {' '}
+              <CircleAlert className="header-icon" /> */}
+              due today!
+            </span>
+          )}
+          <span
+            className={`difficulty-chip ${card.difficulty.toLowerCase() || 'easy'}`}
+          >
             {card.difficulty || 'Easy'}
           </span>
-          <span style={{ cursor: 'pointer' }} onClick={() => onToggle(card.id)}>
-            {openIds.includes(card.id) ? <ChevronUp /> : <ChevronDown />}
+          <span onClick={() => onToggle(card.id)} className="chevron">
+            {isOpen ? <ChevronUp /> : <ChevronDown />}
           </span>
         </div>
       </div>
-      {openIds.includes(card.id) && (
+      {isOpen && (
         <div
-          className={`accordion-content-container ${openIds.includes(card.id) ? 'content-open' : ''}`}
+          className={`accordion-content-container parched-notebook ${isOpen ? 'content-open' : ''} ${isDue ? 'due-content' : ''}`}
         >
           <div className="accordion-content">
-            <p>
-              <b>Next Review:</b> {formatDate(card.nextReviewAt)}
-            </p>
-            <p>{card.problem}</p>
-            <p>{card.complexity}</p>
-            <p>{card.mistakes}</p>
+            <CardQuestionContent card={card} />
+            <CardSolutionContent card={card} />
           </div>
         </div>
       )}

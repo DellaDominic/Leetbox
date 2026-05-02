@@ -15,6 +15,7 @@ const AddCard = ({ saveCard, getNextReviewDate }) => {
     nextReview: '',
     createdOn: '',
     id: '',
+    box: '',
   };
   const [form, setForm] = useState(clearFormState);
   const handleFormSubmit = async (e) => {
@@ -24,6 +25,7 @@ const AddCard = ({ saveCard, getNextReviewDate }) => {
       ...form,
       tags: form.tags.split(',').map((tag) => tag.trim()),
       id: Date.now(),
+      box: 1,
       createdOn: new Date().toISOString(),
       nextReview: getNextReviewDate(1),
     };

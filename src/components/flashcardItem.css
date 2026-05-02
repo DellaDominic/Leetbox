@@ -1,6 +1,6 @@
 .accordion {
   /* border: 2px solid red; */
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .accordion-header {
@@ -11,12 +11,21 @@
   height: 5rem;
   padding: 0 20px;
   border-radius: 20px;
+  box-shadow: #ffe8be -4px -4px;
+}
+
+/* .accordion-header:hover {
+  box-shadow: #ffe8be -4px -4px;
+} */
+
+.chevron:hover {
+  cursor: pointer;
 }
 
 .accordion-header-right {
-  width: 20%;
+  width: 50%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -28,10 +37,26 @@
 }
 
 .difficulty-chip {
-  border: 2px solid green;
-  padding: 5px;
-  border-radius: 8px;
-  margin: 5px 0;
+  border: 2px solid black;
+  border-radius: 16px;
+  margin-right: 20px;
+  text-transform: capitalize;
+  color: black;
+  padding: 5px 15px;
+  font-weight: bold;
+  font-family: 'Manrope', sans-serif;
+}
+
+.difficulty-chip.easy {
+  background-color: #e5ffd2;
+}
+
+.difficulty-chip.medium {
+  background-color: #ffe8be;
+}
+
+.difficulty-chip.hard {
+  background-color: #ffb7b7;
 }
 
 .accordion-content-container {
@@ -48,18 +73,78 @@
 }
 
 .accordion-content-container.content-open {
-  max-height: 100px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 12px;
+  box-shadow:
+    #ffe8be -4px 0,
+    #000 0 -4px,
+    #ffe8be -4px -4px;
+}
+
+.accordion-content-container.content-open.due-content {
+  /* max-height: 400px;
+  overflow-y: auto;
+  padding: 12px; */
+  box-shadow:
+    #ffb7b7 -4px 0,
+    #000 0 -4px,
+    #ffb7b7 -4px -4px;
+}
+
+.due-header {
+  box-shadow: #ffb7b7 -4px -4px;
+  /* #000 -6px -6px; */
 }
 
 .accordion-content {
-  max-height: 250px;
   overflow-y: auto;
   padding: 12px;
 }
 
 .header-open {
-  color: red;
-  /* border-bottom: none; */
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.box-number {
+  background-color: #000;
+  color: #f7dd7d;
+  box-shadow: #f7dd7d -6px -6px;
+  padding: 10px 15px;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  border-bottom: 4px solid #f7dd7d;
+  /* width: 150px; */
+  /* border: 1px solid black; */
+}
+
+.header-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.header-icon.link:active {
+  color: #26d98b;
+}
+.header-icon.edit:active {
+  color: #ffe66c;
+}
+.header-icon.delete:active {
+  color: #ff6b6b;
+}
+
+.due {
+  font-family: 'Gloria Hallelujah';
+  color: #ff6b6b;
+  margin-right: 20px;
 }
