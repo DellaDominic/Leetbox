@@ -1,2 +1,34 @@
-.card-question {
+.card-question h1,
+.card-solution h1 {
+  border-bottom: 4px solid #f7dd7d;
+  margin: 15px 0;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.content-header {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.tag-chip {
+  display: inline-block;
+  padding: 5px 15px;
+  margin-right: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: #f7dd7d;
+  text-transform: capitalize;
+}
+
+.date {
+  font-size: 14px;
+  margin-top: 8px;
+  /* box-shadow: black 4px -4px; */
+  font-family: 'Gloria Hallelujah';
+  letter-spacing: 1.5px;
+  padding: 0 8px;
 }

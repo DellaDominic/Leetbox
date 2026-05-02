@@ -77,7 +77,6 @@
   overflow-y: auto;
   padding: 12px;
   box-shadow:
-    #ffe8be -4px 0,
     #000 0 -4px,
     #ffe8be -4px -4px;
 }
@@ -87,7 +86,6 @@
   overflow-y: auto;
   padding: 12px; */
   box-shadow:
-    #ffb7b7 -4px 0,
     #000 0 -4px,
     #ffb7b7 -4px -4px;
 }
@@ -111,9 +109,10 @@
   background-color: #000;
   color: #f7dd7d;
   box-shadow: #f7dd7d -6px -6px;
-  padding: 10px 15px;
+  padding: 10px;
   font-weight: bold;
   margin-right: 15px;
+  font-size: 14px;
 }
 
 .card-title {
