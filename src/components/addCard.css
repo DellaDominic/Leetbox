@@ -17,8 +17,16 @@
 
 .inline-form-group {
   display: flex;
-  /* gap: 10rem; */
+  gap: 2rem;
   justify-content: space-between;
+}
+.inline-form-group .form-group {
+  width: 50%;
+}
+
+.inline-form-group input,
+.inline-form-group select {
+  width: 100%;
 }
 
 .form-group {

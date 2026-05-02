@@ -5,7 +5,6 @@ import {
   Trash2,
   ChevronDown,
   ChevronUp,
-  // CircleAlert,
 } from 'lucide-react';
 import { getIsDue } from '../utils/helper';
 import { Link } from 'react-router-dom';

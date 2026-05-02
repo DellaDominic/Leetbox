@@ -98,6 +98,9 @@
 .accordion-content {
   overflow-y: auto;
   padding: 12px;
+  /* important style for preseving line breaks and space and wraping long content still to a new line */
+  white-space: pre-wrap;
+  word-break: break-word; /* prevents overflow */
 }
 
 .header-open {
@@ -140,6 +143,10 @@
 }
 .header-icon.delete:active {
   color: #ff6b6b;
+}
+
+.header-icon:visited {
+  color: #000;
 }
 
 .due {
