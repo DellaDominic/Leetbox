@@ -1,16 +1,51 @@
+.card-question,
+.card-solution {
+  font-size: 16px;
+  /* font-weight: bold; */
+  letter-spacing: 1px;
+  font-family: 'inter', sans-serif;
+}
+
+.card-question {
+  padding-left: 10px;
+}
+
 .card-question h1,
 .card-solution h1 {
   border-bottom: 4px solid #f7dd7d;
-  margin: 15px 0;
   text-transform: uppercase;
   width: fit-content;
 }
 
+.card-solution {
+  margin-top: 20px;
+}
+
+.card-solution h1 {
+  margin-left: 10px;
+}
+
+.quote {
+  background-color: #fff;
+  border: 1px solid #f7dd7d;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card-question h2,
+.card-solution h2 {
+  border-left: 4px solid #f7dd7d;
+  margin: 15px 0;
+  padding-left: 10px;
+  text-transform: capitalize;
+  width: fit-content;
+  font-size: 16px;
+}
+
 .content-header {
-  padding: 10px 0;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
   font-weight: bold;
 }
 

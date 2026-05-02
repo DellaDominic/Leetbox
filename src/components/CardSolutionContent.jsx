@@ -4,9 +4,11 @@ const CardSolutionContent = ({ card }) => {
   return (
     <div className="card-solution">
       <h1>Solution</h1>
-      <p>{card.solution}</p>
-      <p>{card.complexity}</p>
-      <p>{card.mistakes}</p>
+      <p className="quote">{card.solution}</p>
+      <h2>Complexity Analysis</h2>
+      <p className="quote">{card.complexity}</p>
+      <h2>Mistakes</h2>
+      <p className="quote">{card.mistakes}</p>
     </div>
   );
 };
