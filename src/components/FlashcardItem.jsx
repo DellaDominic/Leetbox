@@ -54,7 +54,7 @@ const FlashcardItem = ({ openIds, onToggle, card }) => {
       </div>
       {isOpen && (
         <div
-          className={`accordion-content-container parched-notebook ${isOpen ? 'content-open' : ''} ${isDue ? 'due-content' : ''}`}
+          className={`accordion-content-container parched-notebook  ${isOpen ? 'content-open' : ''} ${isDue ? 'due-content' : ''}`}
         >
           <div className="accordion-content">
             <CardQuestionContent card={card} />

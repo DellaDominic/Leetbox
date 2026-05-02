@@ -53,3 +53,22 @@ body {
   background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
   background-size: 25px 25px;
 }
+
+.grid-paper {
+  /* Your light parched color  */
+  /* background-color: #fefaf2;*/
+  background-color: #fffdfa;
+
+  /* background-image: */
+  /* Horizontal lines */
+  /* linear-gradient(#e0d7c6 1px, transparent 1px), */
+  /* Vertical lines */
+  /* linear-gradient(90deg, #e0d7c6 1px, transparent 1px); */
+
+  /* below makes the line subtle than the above rule */
+  background-image:
+    linear-gradient(rgba(224, 215, 198, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(224, 215, 198, 0.5) 1px, transparent 1px);
+
+  background-size: 24px 24px; /* The size of the grid squares */
+}
