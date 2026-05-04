@@ -2,10 +2,10 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { saveCard, getNextReviewDate } from './utils/helper';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Study from './components/Study';
-import Cards from './components/Cards';
-import AddCard from './components/AddCard';
+import Home from './pages/Home';
+import Study from './pages/Study';
+import Cards from './pages/Cards';
+import AddCard from './pages/AddCard';
 import EditCard from './components/EditCard';
 
 function App() {

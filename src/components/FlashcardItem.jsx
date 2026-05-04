@@ -12,10 +12,9 @@ import { Link } from 'react-router-dom';
 import CardSolutionContent from './CardSolutionContent';
 import CardQuestionContent from './CardQuestionContent';
 
-const FlashcardItem = ({ openIds, onToggle, card }) => {
+const FlashcardItem = ({ openIds, onToggle, card, onDeleteClick }) => {
   const isOpen = openIds.includes(card.id);
   const isDue = getIsDue(card.box || 1);
-
   useEffect(() => {
     if (isOpen) {
       document
@@ -42,13 +41,13 @@ const FlashcardItem = ({ openIds, onToggle, card }) => {
           <Link className="header-icon edit" to={`/edit/${card.id}`}>
             <SquarePen />
           </Link>
-          <span className="header-icon delete">
+          <span className="header-icon delete" onClick={onDeleteClick}>
             <Trash2 />
           </span>
         </div>
         <div className="accordion-header-right">
           {isDue && (
-            <span className="due double-text">
+            <span className="due">
               {/* {' '}
               <CircleAlert className="header-icon" /> */}
               due today !

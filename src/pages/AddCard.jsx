@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './addCard.css';
-import PageHeader from './PageHeader';
+import PageHeader from '../components/PageHeader';
 import { useNavigate } from 'react-router-dom';
 
 const AddCard = ({ saveCard, getNextReviewDate, existingCard }) => {

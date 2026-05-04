@@ -33,6 +33,11 @@ export async function getCardById(id) {
   return card;
 }
 
+export async function deleteCard(id) {
+  const db = await initDB();
+  await db.delete(STORE_NAME, id);
+}
+
 // returns the next review date based on the box number
 export const getNextReviewDate = (boxNumber) => {
   const boxInterval = BOX_INTERVALS[boxNumber].reviewDays ?? 1;

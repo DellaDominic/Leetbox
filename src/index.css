@@ -84,3 +84,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #000;
 }
+
+.double-text {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+  /* offset-x | offset-y | blur-radius | color */
+  text-shadow: 2px 0px 0px #ffb7b7;
+}

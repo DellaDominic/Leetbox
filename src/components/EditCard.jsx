@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCardById, saveCard } from '../utils/helper';
-import AddCard from './AddCard';
+import AddCard from '../pages/AddCard';
 
 const EditCard = () => {
   const { id } = useParams();
