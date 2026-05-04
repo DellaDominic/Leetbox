@@ -6,12 +6,12 @@ const CardQuestionContent = ({ card }) => {
 
   return (
     <div className="card-question">
-      <div className="content-header">
+      <div className={`content-header ${!card.tags.length ? 'align-end' : ''}`}>
         {card.tags.length > 0 && (
           <div>
             {card.tags.map((tag) => (
               <div className="tag-chip" key={tag}>
-                {tag || 'No-tag'}
+                {tag}
               </div>
             ))}
           </div>

@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { getAllCards } from '../utils/helper';
 import PageHeader from './PageHeader';
 import FlashcardItem from './FlashcardItem';
 import './cards.css';
 
 const Cards = () => {
-  const [openIds, setOpenIds] = useState([]);
+  const location = useLocation();
+  const [openIds, setOpenIds] = useState(
+    location.state?.openId ? [location.state.openId] : [],
+  );
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -15,6 +19,7 @@ const Cards = () => {
     };
     loadCards();
   }, []);
+
   return (
     <div>
       <PageHeader heading="Flashcards" />

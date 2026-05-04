@@ -7,7 +7,7 @@
 }
 
 .card-question {
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 .card-question h1,
@@ -21,9 +21,9 @@
   margin-top: 20px;
 }
 
-.card-solution h1 {
+/* .card-solution h1 {
   margin-left: 10px;
-}
+} */
 
 .quote {
   background-color: #fff;
@@ -47,6 +47,10 @@
   justify-content: space-between;
   margin-bottom: 20px;
   font-weight: bold;
+}
+
+.content-header.align-end {
+  justify-content: flex-end;
 }
 
 .tag-chip {

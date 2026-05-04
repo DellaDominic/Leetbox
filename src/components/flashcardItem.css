@@ -97,8 +97,7 @@
 
 .accordion-content {
   overflow-y: auto;
-  padding: 12px;
-  padding-right: 34px;
+  padding: 12px 22px;
   /* important style for preseving line breaks and space and wraping long content still to a new line */
   white-space: pre-wrap;
   word-break: break-word; /* prevents overflow */
@@ -153,8 +152,24 @@
 .header-icon:link {
   color: #000;
 }
+.header-icon.link.disabled {
+  color: gray;
+  pointer-events: none; /* Prevents clicking */
+  cursor: default; /* Shows normal arrow instead of hand cursor */
+  text-decoration: none;
+}
+
 .due {
   font-family: 'Gloria Hallelujah';
-  color: #ff6b6b;
   margin-right: 20px;
+  color: #ff6b6b; /* Main text color */
+  letter-spacing: 1px;
 }
+
+/* .double-text { */
+/* color: #ff6b6b; */
+/* font-size: 18px; */
+/* font-weight: bold; */
+/* offset-x | offset-y | blur-radius | color */
+/* text-shadow: 2px 0px 0px #000; */
+/* } */

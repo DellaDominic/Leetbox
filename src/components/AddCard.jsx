@@ -54,10 +54,10 @@ const AddCard = ({ saveCard, getNextReviewDate, existingCard }) => {
 
     console.log({ updatedCard });
     await saveCard(updatedCard);
-    if (isEditMode) {
-      navigate('/cards');
-    }
     setForm(clearFormState);
+    navigate('/cards', {
+      state: { openId: updatedCard.id },
+    });
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -127,7 +127,7 @@ const AddCard = ({ saveCard, getNextReviewDate, existingCard }) => {
           ></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="approach">Approach</label>
+          <label htmlFor="approach">Intuition and Approach</label>
           <textarea
             name="approach"
             value={form.approach}

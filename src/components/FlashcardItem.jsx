@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './flashcardItem.css';
 import {
   SquarePen,
@@ -15,15 +16,27 @@ const FlashcardItem = ({ openIds, onToggle, card }) => {
   const isOpen = openIds.includes(card.id);
   const isDue = getIsDue(card.box || 1);
 
+  useEffect(() => {
+    if (isOpen) {
+      document
+        .getElementById(`card-${card.id}`)
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [card.id, isOpen]);
+
   return (
-    <div className="accordion">
+    <div className="accordion" id={`card-${card.id}`}>
       <div
         className={`accordion-header ${isOpen ? 'header-open' : ''} ${isDue ? 'due-header' : ''}`}
       >
         <div className="accordion-header-left">
           <span className="box-number">Box {card.box || 1}</span>
           <span className="card-title">{card.title}</span>
-          <a className="header-icon link" href={card.link} target="_blank">
+          <a
+            className={`header-icon link ${!card.link ? 'disabled' : ''}`}
+            href={card.link}
+            target="_blank"
+          >
             <ExternalLink />
           </a>
           <Link className="header-icon edit" to={`/edit/${card.id}`}>
@@ -35,10 +48,10 @@ const FlashcardItem = ({ openIds, onToggle, card }) => {
         </div>
         <div className="accordion-header-right">
           {isDue && (
-            <span className="due">
+            <span className="due double-text">
               {/* {' '}
               <CircleAlert className="header-icon" /> */}
-              due today!
+              due today !
             </span>
           )}
           <span
