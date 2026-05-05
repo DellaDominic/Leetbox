@@ -1,0 +1,70 @@
+.flashcard-container {
+  margin-bottom: 50px;
+  /* border: 2px solid red; */
+  height: 80vh;
+}
+
+.flashcard-container .progress-bar {
+  padding: 5px 0;
+  /* margin: 20px 0rem 0; */
+  border: 2px solid #000;
+  box-shadow:
+    #ffe8be 0 -4px,
+    #000 0 4px;
+
+  height: 5px;
+  border-radius: 20px;
+  background-image: linear-gradient(
+    90deg,
+    #ffb7b7,
+    rgb(255, 230, 109),
+    #e5ffd2 /* rgb(255, 230, 109) */
+  );
+}
+
+.card-header {
+  margin: 20px;
+}
+
+.flashcard-card-content {
+  width: 30rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden; /* check again */
+
+  border: 2px solid #000;
+  border-radius: 20px;
+
+  margin: 30px auto;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  /* flip logic */
+  perspective: 1000px;
+  position: relative;
+}
+
+.flashcard-card-content > *:first-child {
+  flex: 1;
+  overflow-y: auto; /* scroll ONLY content */
+  padding: 30px;
+}
+
+.flip-section {
+  border-top: 2px solid black;
+  padding: 12px;
+  padding-left: 20px;
+  width: 100%;
+  background-color: #fff;
+  font-family: 'Gloria Hallelujah', sans-serif;
+  font-weight: bold;
+  background: #f7dd7d;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

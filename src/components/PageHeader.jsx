@@ -1,11 +1,13 @@
 import './pageHeader.css';
 // import { arrowLeft } from 'lucide';
 
-const PageHeader = ({ heading }) => {
+const PageHeader = ({ heading, rightHeaderContent }) => {
   return (
     <div className="page-header-section">
       <h1>{heading}</h1>
-      {/* <div>back</div> */}
+      {rightHeaderContent && (
+        <div className="header-right-content">{rightHeaderContent}</div>
+      )}
     </div>
   );
 };

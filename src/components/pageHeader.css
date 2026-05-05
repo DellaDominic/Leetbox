@@ -1,7 +1,7 @@
 .page-header-section {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   /* border-bottom: 2px solid #dbdce6; */
   /* border-bottom: 2px solid black; */
 }
@@ -40,4 +40,22 @@
     #e5ffd2 /* rgb(255, 230, 109) */
   );
   width: fit-content;
+}
+
+.header-right-content {
+  /* width: 4rem;
+  height: 4rem;
+  border: 3px solid #000;
+  rotate: -12deg;
+  border-radius: 8px;
+  background-color: #ffe8be; */
+  padding: 10px;
+  margin-right: 12px;
+  font-size: 18px;
+  font-family: 'Gloria Hallelujah', san-serif;
+  letter-spacing: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
