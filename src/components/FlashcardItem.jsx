@@ -14,7 +14,7 @@ import CardQuestionContent from './CardQuestionContent';
 
 const FlashcardItem = ({ openIds, onToggle, card, onDeleteClick }) => {
   const isOpen = openIds.includes(card.id);
-  const isDue = getIsDue(card.box || 1);
+  const isDue = getIsDue(card);
   useEffect(() => {
     if (isOpen) {
       document
@@ -29,7 +29,7 @@ const FlashcardItem = ({ openIds, onToggle, card, onDeleteClick }) => {
         className={`accordion-header ${isOpen ? 'header-open' : ''} ${isDue ? 'due-header' : ''}`}
       >
         <div className="accordion-header-left">
-          <span className="box-number">Box {card.box || 1}</span>
+          <span className="box-number">Box {card.box}</span>
           <span className="card-title">{card.title}</span>
           <a
             className={`header-icon link ${!card.link ? 'disabled' : ''}`}

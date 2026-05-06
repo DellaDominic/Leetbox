@@ -5,14 +5,34 @@ import { initDB, STORE_NAME } from './store';
 // to-do: make isDue dynamic based on nextReviewDate and current date and count of cards in each box
 // to-do: count should be dynamic based on number of cards in each box
 
-export const BOX_INTERVALS = {
-  1: { count: 14, reviewDays: 1, label: 'Daily', isDue: true },
-  2: { count: 2, reviewDays: 2, label: 'Every 2 Days', isDue: false },
-  3: { count: 1, reviewDays: 4, label: 'Every 4 Days', isDue: true },
-  4: { count: 0, reviewDays: 8, label: 'Every 8 Days', isDue: false },
-  5: { count: 8, reviewDays: 16, label: 'Every 16 Days', isDue: false },
-  6: { count: 0, reviewDays: 32, label: 'Every 32 Days', isDue: false },
-  7: { count: 0, reviewDays: 64, label: 'Every 64 Days', isDue: false },
+export const getBoxDetails = (cards = []) => {
+  const boxData = {};
+
+  // Initialize all 7 boxes
+  for (let box = 1; box <= 7; box++) {
+    const reviewDays = Math.pow(2, box - 1); // 1,2,4,8...
+
+    boxData[box] = {
+      count: 0,
+      reviewDays,
+      label: box === 1 ? 'Daily' : `Every ${reviewDays} Days`,
+      isDue: false,
+    };
+  }
+
+  // Populate counts + due state
+  cards.forEach((card) => {
+    const box = Math.min(Math.max(card.box, 1), 7);
+
+    boxData[box].count += 1;
+
+    // If ANY card in this box is due → mark box as due
+    if (getIsDue(card)) {
+      boxData[box].isDue = true;
+    }
+  });
+
+  return boxData;
 };
 
 /* Save and update existing cards via put to indexedDB via idb */
@@ -40,17 +60,43 @@ export async function deleteCard(id) {
 
 // returns the next review date based on the box number
 export const getNextReviewDate = (boxNumber) => {
-  const boxInterval = BOX_INTERVALS[boxNumber].reviewDays ?? 1;
+  // Mastered cards → no more reviews
+  if (boxNumber >= 7) return null;
 
-  let date = new Date();
-  date.setDate(date.getDate() + boxInterval);
+  const intervalDays = Math.pow(2, boxNumber - 1); // 1,2,4,8...
+
+  const date = new Date();
+
+  // ✅ Snap to start of today
+  date.setHours(0, 0, 0, 0);
+
+  // ✅ Add interval
+  date.setDate(date.getDate() + intervalDays);
+
   return date.toISOString();
 };
 
 export const formatDate = (date) => {
   return new Date(date).toLocaleDateString();
 };
-// to-do change this logic
-export function getIsDue(box) {
-  return box === 2;
-}
+
+export const getIsDue = (card) => {
+  // New cards (never scheduled)
+  if (!card.nextReviewDate) return true;
+
+  // Mastered cards should never appear
+  if (card.box >= 7) return false;
+
+  const now = new Date();
+
+  // ✅ Snap current time to start of today
+  now.setHours(0, 0, 0, 0);
+
+  const nextReview = new Date(card.nextReviewDate);
+
+  return now >= nextReview;
+};
+
+export const getDueCards = (cards) => {
+  return cards.filter((card) => getIsDue(card));
+};

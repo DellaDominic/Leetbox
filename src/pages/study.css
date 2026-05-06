@@ -1,25 +1,37 @@
 .flashcard-container {
   margin-bottom: 50px;
   /* border: 2px solid red; */
-  height: 80vh;
+  /* height: 80vh; */
 }
 
-.flashcard-container .progress-bar {
+.progress-bar {
+  position: relative;
   padding: 5px 0;
   /* margin: 20px 0rem 0; */
   border: 2px solid #000;
   box-shadow:
-    #ffe8be 0 -4px,
-    #000 0 4px;
+    /* #ffe8be 0 -4px, */ #000 0 4px;
+  background: #fff;
 
   height: 5px;
+  width: 100%;
+  overflow: hidden;
   border-radius: 20px;
+}
+
+.progress-fill {
+  position: absolute;
+  height: 100%;
   background-image: linear-gradient(
     90deg,
     #ffb7b7,
     rgb(255, 230, 109),
-    #e5ffd2 /* rgb(255, 230, 109) */
+    #e5ffd2
   );
+  top: 0;
+  /* background: #f7dd7d; */
+  /* transition: width 0.4s ease; */
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-header {
@@ -28,8 +40,8 @@
 
 .flashcard-card-content {
   width: 30rem;
-  height: 30rem;
-  margin: 30px auto;
+  height: 28rem;
+  margin: 0px auto 10px;
 
   /* border: 2px solid #000; */
   border-radius: 20px;
@@ -139,6 +151,7 @@
 
 .card-footer-ctas button {
   height: 3rem;
+  width: 14rem;
   font-weight: bold;
   border: 2px dashed #000;
   border-radius: 20px;

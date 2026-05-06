@@ -101,11 +101,13 @@ h1 {
   justify-content: space-evenly;
 }
 
-.box-content:hover {
-  /* box-shadow:
+/* .box-content:hover { */
+/* box-shadow:
     black 8px -8px inset,
     black -8px 8px; */
-}
+/* transform: scale(1.05); */
+/* cursor: pointer; */
+/* } */
 
 .box-content {
   width: 120px;

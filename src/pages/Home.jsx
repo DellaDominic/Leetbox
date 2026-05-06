@@ -1,19 +1,23 @@
 import './home.css';
-import { BOX_INTERVALS } from '../utils/helper';
+import { useEffect, useState } from 'react';
+import { getBoxDetails, getAllCards, getDueCards } from '../utils/helper';
 import { BookOpen, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const total = Object.values(BOX_INTERVALS).reduce((acc, { count }) => {
-    return acc + count;
-  }, 0);
+  const [cards, setCards] = useState([]);
 
-  const totalDue = Object.values(BOX_INTERVALS).reduce(
-    (acc, { isDue, count }) => {
-      return isDue ? acc + count : acc;
-    },
-    0,
-  );
+  useEffect(() => {
+    const loadCards = async () => {
+      const cards = await getAllCards();
+      setCards(cards);
+    };
+    loadCards();
+  }, []);
+
+  const total = cards.length;
+  const totalDue = getDueCards(cards).length;
+  const boxData = getBoxDetails(cards);
 
   return (
     <div className="home-container">
@@ -49,7 +53,7 @@ const Home = () => {
       {/* leitner boxes section */}
       <div className="sub-heading">LEITNER BOXES</div>
       <div className="leitner-boxes">
-        {Object.entries(BOX_INTERVALS).map(
+        {Object.entries(boxData).map(
           ([number, { count, reviewDays, isDue }]) => (
             <div className="leitner-box-container" key={number}>
               <div

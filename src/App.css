@@ -3,7 +3,7 @@ main {
   max-width: 1200px;
   display: flex;
   /*margin left and right auto to center the main element horizontally, and margin top and bottom to create space around it */
-  margin: 120px auto 0;
+  margin: 100px auto 0;
   font-family: 'Manrope', sans-serif;
 }
 
