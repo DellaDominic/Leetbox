@@ -29,42 +29,100 @@
 .flashcard-card-content {
   width: 30rem;
   height: 30rem;
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden; /* check again */
-
-  border: 2px solid #000;
-  border-radius: 20px;
-
   margin: 30px auto;
 
-  white-space: pre-wrap;
-  word-break: break-word;
+  /* border: 2px solid #000; */
+  border-radius: 20px;
 
-  /* flip logic */
   perspective: 1000px;
   position: relative;
 }
 
-.flashcard-card-content > *:first-child {
-  flex: 1;
-  overflow-y: auto; /* scroll ONLY content */
-  padding: 30px;
+.card-flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  border: 2px solid #000;
+  border-radius: 20px;
+
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+
+  display: flex; /* ✅ ADD THIS */
+  flex-direction: column;
 }
 
+/* Flip trigger */
+.flashcard-card-content.flip .card-flipper {
+  transform: rotateY(180deg);
+}
+
+/* BOTH SIDES */
+.front-card,
+.back-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  backface-visibility: hidden;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  white-space: pre-wrap;
+  word-break: break-word; /* prevents overflow */
+
+  overflow: hidden;
+}
+
+/* FRONT */
+.front-card {
+  transform: rotateY(0deg);
+  background-color: #fff;
+  min-height: 0;
+}
+
+/* BACK */
+.back-card {
+  transform: rotateY(180deg);
+  /* A soft, aged paper color */
+  background-color: #fffdfa;
+
+  /* Semi-transparent dots so they blend with the paper color */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  background-size: 25px 25px;
+
+  min-height: 0;
+}
+
+/* ONLY inner content scrolls */
+.card-scrollable-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+  min-height: 0; /* extra safety */
+  /* outline: 2px solid red; */
+  /* contain: layout paint; */
+  /* transform: translateZ(0);  */
+}
+
+/* Bottom strip */
 .flip-section {
   border-top: 2px solid black;
-  padding: 12px;
-  padding-left: 20px;
-  width: 100%;
-  background-color: #fff;
-  font-family: 'Gloria Hallelujah', sans-serif;
-  font-weight: bold;
+  padding: 12px 20px;
   background: #f7dd7d;
   cursor: pointer;
 
   display: flex;
   align-items: center;
   gap: 10px;
+
+  border-bottom: 2px solid #f7dd7d;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }

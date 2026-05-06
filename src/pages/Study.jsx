@@ -44,36 +44,44 @@ const Study = () => {
               <div className="card-header">
                 <CardQuestionHeader card={card} showReview={false} />
               </div>
-              <div className="flashcard-card-content parched-notebook">
-                <div className="card-scrollable-content">
-                  {flipState === 'front' ? (
-                    <CardQuestionContent
-                      card={card}
-                      showQuestionHeader={false}
-                      title={card.title}
-                    />
-                  ) : (
-                    <CardSolutionContent card={card} />
-                  )}
-                </div>
-                <div
-                  className="flip-section"
-                  onClick={() =>
-                    setFlipState(flipState === 'front' ? 'back' : 'front')
-                  }
-                >
-                  {' '}
-                  <RotateCcw />
-                  {flipState === 'front' ? (
-                    <>Click to reveal solution</>
-                  ) : (
-                    <>Click to Flip back</>
-                  )}
+              <div
+                className={`flashcard-card-content ${flipState === 'back' ? 'flip' : ''}`}
+              >
+                <div className="card-flipper">
+                  <div className="front-card">
+                    <div className="card-scrollable-content">
+                      <CardQuestionContent
+                        card={card}
+                        showQuestionHeader={false}
+                        title={card.title}
+                      />
+                    </div>
+                    <div
+                      className="flip-section"
+                      onClick={() =>
+                        setFlipState(flipState === 'front' ? 'back' : 'front')
+                      }
+                    >
+                      <RotateCcw />
+                      Click to reveal solution
+                    </div>
+                  </div>
+                  <div className="back-card">
+                    <div className="card-scrollable-content">
+                      <CardSolutionContent card={card} />
+                    </div>
+                    <div
+                      className="flip-section"
+                      onClick={() =>
+                        setFlipState(flipState === 'front' ? 'back' : 'front')
+                      }
+                    >
+                      <RotateCcw />
+                      Click to Flip back
+                    </div>
+                  </div>
                 </div>
               </div>
-              {/* <div className="flashcard-card-content back">
-                <CardSolutionContent card={card} />
-              </div> */}
             </Fragment>
           ))
         ) : (
