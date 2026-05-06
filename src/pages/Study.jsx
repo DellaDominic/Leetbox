@@ -5,44 +5,48 @@ import {
   saveCard,
   getNextReviewDate,
   getDueCards,
-  getCardById,
 } from '../utils/helper';
 import PageHeader from '../components/PageHeader';
 import './study.css';
-// import '../index.css';
 import NoResults from '../components/NoResults';
 import CardQuestionContent from '../components/CardQuestionContent';
 import CardSolutionContent from '../components/CardSolutionContent';
 import CardQuestionHeader from '../components/CardQuestionHeader';
 
 const Study = () => {
-  const [cards, setCards] = useState([]);
-  const [flipState, setFlipState] = useState('front');
+  const [dueCards, setDueCards] = useState([]); // ✅ session snapshot
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [reviewedCount, setReviewedCount] = useState(0);
+  const [flipState, setFlipState] = useState('front');
 
+  // ✅ Initialize session once
   useEffect(() => {
     const loadCards = async () => {
-      const cards = await getAllCards();
-      setCards(cards);
+      const allCards = await getAllCards();
+      const due = getDueCards(allCards);
+      setDueCards(due);
     };
+
     loadCards();
   }, []);
 
-  const dueCards = getDueCards(cards);
-  const [selectedDueCardIndex, setSelectedDueCardIndex] = useState(0);
-  // const [visitedCards, setVisitedCards] = useState(dueCards);
   const totalDueCards = dueCards.length;
+
   const progress =
     totalDueCards > 0 ? (reviewedCount / totalDueCards) * 100 : 0;
 
-  const cardsCountContent = (
-    <span className="count-text">
-      Revised <b>{reviewedCount}</b> out of <b>{totalDueCards}</b> Cards
-    </span>
-  );
+  const cardsCountContent =
+    reviewedCount < totalDueCards ? (
+      <span className="count-text">
+        Card <b>{totalDueCards ? reviewedCount + 1 : 0}</b> out of{' '}
+        <b>{totalDueCards}</b> Cards
+      </span>
+    ) : (
+      <></>
+    );
 
   const handleCorrect = (card) => {
-    const newBox = Math.min(card.box + 1, 7);
+    const newBox = Math.min((card.box || 1) + 1, 7);
 
     return {
       ...card,
@@ -64,13 +68,10 @@ const Study = () => {
 
     await saveCard(updatedCard);
 
-    const check = await getCardById(updatedCard.id);
-    console.log('saved card:', check);
+    // optional debug
+    // console.log('saved card:', updatedCard);
 
-    const freshCards = await getAllCards();
-    setCards(freshCards);
-
-    setSelectedDueCardIndex((prev) => prev + 1);
+    setCurrentIndex((prev) => prev + 1);
     setReviewedCount((prev) => prev + 1);
     setFlipState('front');
   };
@@ -83,27 +84,33 @@ const Study = () => {
         <div className="progress-bar">
           <div className="progress-fill" style={{ width: `${progress}%` }} />
         </div>
-        {dueCards.length > 0 && selectedDueCardIndex < dueCards.length ? (
-          <Fragment key={dueCards[selectedDueCardIndex].id}>
+
+        {dueCards.length > 0 && currentIndex < dueCards.length ? (
+          <Fragment key={dueCards[currentIndex].id}>
             <div className="card-header">
               <CardQuestionHeader
-                card={dueCards[selectedDueCardIndex]}
+                card={dueCards[currentIndex]}
                 showReview={false}
                 showBoxAndLevel
               />
             </div>
+
             <div
-              className={`flashcard-card-content ${flipState === 'back' ? 'flip' : ''}`}
+              className={`flashcard-card-content ${
+                flipState === 'back' ? 'flip' : ''
+              }`}
             >
               <div className="card-flipper">
+                {/* FRONT */}
                 <div className="front-card">
                   <div className="card-scrollable-content">
                     <CardQuestionContent
-                      card={dueCards[selectedDueCardIndex]}
+                      card={dueCards[currentIndex]}
                       showQuestionHeader={false}
-                      title={dueCards[selectedDueCardIndex].title}
+                      title={dueCards[currentIndex].title}
                     />
                   </div>
+
                   <div
                     className="flip-section"
                     onClick={() =>
@@ -114,12 +121,13 @@ const Study = () => {
                     Click to reveal solution
                   </div>
                 </div>
+
+                {/* BACK */}
                 <div className="back-card">
                   <div className="card-scrollable-content">
-                    <CardSolutionContent
-                      card={dueCards[selectedDueCardIndex]}
-                    />
+                    <CardSolutionContent card={dueCards[currentIndex]} />
                   </div>
+
                   <div
                     className="flip-section"
                     onClick={() =>
@@ -132,21 +140,24 @@ const Study = () => {
                 </div>
               </div>
             </div>
+
+            {/* CTA */}
             <div className="card-footer-ctas">
               <button
                 onClick={() =>
-                  handleReview(dueCards[selectedDueCardIndex], handleWrong)
+                  handleReview(dueCards[currentIndex], handleWrong)
                 }
               >
                 Revisit - Reset to Box 1
               </button>
+
               <button
                 onClick={() =>
-                  handleReview(dueCards[selectedDueCardIndex], handleCorrect)
+                  handleReview(dueCards[currentIndex], handleCorrect)
                 }
               >
                 Got it - Move to Box{' '}
-                {Number(dueCards[selectedDueCardIndex].box) + 1}
+                {Number(dueCards[currentIndex].box || 1) + 1}
               </button>
             </div>
           </Fragment>

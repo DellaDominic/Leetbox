@@ -53,10 +53,8 @@ const FlashcardItem = ({ openIds, onToggle, card, onDeleteClick }) => {
               due today !
             </span>
           )}
-          <span
-            className={`difficulty-chip ${card.difficulty.toLowerCase() || 'easy'}`}
-          >
-            {card.difficulty || 'Easy'}
+          <span className={`difficulty-chip ${card.difficulty.toLowerCase()}`}>
+            {card.difficulty}
           </span>
           <span onClick={() => onToggle(card.id)} className="chevron">
             {isOpen ? <ChevronUp /> : <ChevronDown />}
