@@ -3,6 +3,8 @@
 LEETBOX is a lightweight flashcard app built with React that helps you retain coding patterns using the **Leitner System** (spaced repetition).
 It’s designed specifically for practicing and revising LeetCode problems effectively over time.
 
+<img width="2868" height="1614" alt="image" src="https://github.com/user-attachments/assets/2e7b4440-a1ac-40cf-9749-54a33fced020" />
+
 ---
 
 ## 🚀 Features
