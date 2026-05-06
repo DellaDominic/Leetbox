@@ -26,7 +26,7 @@ const CardQuestionHeader = ({ card, showReview = true, showBoxAndLevel }) => {
       {showBoxAndLevel && (
         <div>
           <div className="tag-chip">{`Box ${card.box}`}</div>
-          <div className="tag-chip">{card.difficulty || 'Easy'}</div>
+          <div className="tag-chip">{card.difficulty}</div>
         </div>
       )}
     </div>
