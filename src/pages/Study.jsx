@@ -125,7 +125,10 @@ const Study = () => {
                 {/* BACK */}
                 <div className="back-card">
                   <div className="card-scrollable-content">
-                    <CardSolutionContent card={dueCards[currentIndex]} />
+                    <CardSolutionContent
+                      card={dueCards[currentIndex]}
+                      showLink
+                    />
                   </div>
 
                   <div

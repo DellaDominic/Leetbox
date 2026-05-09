@@ -38,7 +38,8 @@ const Cards = () => {
       card.title?.toLowerCase().includes(search.toLowerCase()) ||
       card.approach?.toLowerCase().includes(search.toLowerCase());
 
-    const matchesLevel = level === 'all' || card.difficulty === level;
+    const matchesLevel =
+      level === 'all' || card.difficulty.toLowerCase() === level.toLowerCase();
     const matchesTag =
       tag === 'all' ||
       (card.tags &&
