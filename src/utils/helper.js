@@ -82,7 +82,7 @@ export const formatDate = (date) => {
 
 export const getIsDue = (card) => {
   // New cards (never scheduled)
-  if (!card.nextReviewDate) return false;
+  // if (!card.nextReviewDate) return false;
 
   // Mastered cards should never appear
   if (card.box >= 7) return false;

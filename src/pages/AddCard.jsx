@@ -14,7 +14,7 @@ const AddCard = ({ saveCard, getNextReviewDate, existingCard }) => {
     code: '',
     complexity: '',
     mistakes: '',
-    nextReview: '',
+    nextReviewDate: '',
     createdOn: '',
     id: '',
     box: '',
@@ -49,7 +49,7 @@ const AddCard = ({ saveCard, getNextReviewDate, existingCard }) => {
       updatedCard.id = Date.now();
       updatedCard.box = 1;
       updatedCard.createdOn = new Date().toISOString();
-      updatedCard.nextReview = getNextReviewDate(1);
+      updatedCard.nextReviewDate = getNextReviewDate(1);
     }
 
     console.log({ updatedCard });

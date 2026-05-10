@@ -1,5 +1,5 @@
 import './cardContent.css';
-import { formatDate, getIsDue, getNextReviewDate } from '../utils/helper';
+import { formatDate, getIsDue } from '../utils/helper';
 
 const CardQuestionHeader = ({ card, showReview = true, showBoxAndLevel }) => {
   const isDue = getIsDue(card);
@@ -18,8 +18,7 @@ const CardQuestionHeader = ({ card, showReview = true, showBoxAndLevel }) => {
       {showReview && (
         <div>
           <div className={`date ${isDue ? 'highlight-red' : 'highlight'}`}>
-            Next Review:{' '}
-            {isDue ? 'today!' : formatDate(getNextReviewDate(card.box))}
+            Next Review: {isDue ? 'today!' : formatDate(card.nextReviewDate)}
           </div>
         </div>
       )}
