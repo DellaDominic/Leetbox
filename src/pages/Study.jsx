@@ -51,7 +51,7 @@ const Study = () => {
     return {
       ...card,
       box: newBox,
-      nextReviewDate: getNextReviewDate(newBox),
+      nextReview: getNextReviewDate(newBox),
     };
   };
 
@@ -59,7 +59,7 @@ const Study = () => {
     return {
       ...card,
       box: 1,
-      nextReviewDate: getNextReviewDate(1),
+      nextReview: getNextReviewDate(1),
     };
   };
 

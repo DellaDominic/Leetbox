@@ -131,7 +131,7 @@ Move to Next Card (no re-filtering)
   question: string,
   solution: string,
   box: number,              // 1 → 7
-  nextReviewDate: string    // ISO date
+  nextReview: string    // ISO date
 }
 ```
 
@@ -159,7 +159,7 @@ date.setDate(date.getDate() + intervalDays);
 ### Due Logic
 
 ```js
-isDue = now >= nextReviewDate;
+isDue = now >= nextReview;
 ```
 
 ---

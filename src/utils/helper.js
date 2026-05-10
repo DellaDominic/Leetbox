@@ -1,10 +1,5 @@
 import { initDB, STORE_NAME } from './store';
 
-/* constant the determines the review intervals for each box in the Leitner system */
-
-// to-do: make isDue dynamic based on nextReviewDate and current date and count of cards in each box
-// to-do: count should be dynamic based on number of cards in each box
-
 export const getBoxDetails = (cards = []) => {
   const boxData = {};
 
@@ -82,7 +77,6 @@ export const formatDate = (date) => {
 
 export const getIsDue = (card) => {
   // New cards (never scheduled)
-  // if (!card.nextReviewDate) return false;
 
   // Mastered cards should never appear
   if (card.box >= 7) return false;
@@ -92,7 +86,7 @@ export const getIsDue = (card) => {
   // ✅ Snap current time to start of today
   now.setHours(0, 0, 0, 0);
 
-  const nextReview = new Date(card.nextReviewDate);
+  const nextReview = new Date(card.nextReview);
 
   return now >= nextReview;
 };

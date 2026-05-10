@@ -18,7 +18,7 @@ const CardQuestionHeader = ({ card, showReview = true, showBoxAndLevel }) => {
       {showReview && (
         <div>
           <div className={`date ${isDue ? 'highlight-red' : 'highlight'}`}>
-            Next Review: {isDue ? 'today!' : formatDate(card.nextReviewDate)}
+            Next Review: {isDue ? 'today!' : formatDate(card.nextReview)}
           </div>
         </div>
       )}

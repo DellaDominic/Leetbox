@@ -9,40 +9,34 @@ It’s designed specifically for practicing and revising LeetCode problems effec
 
 ## 🚀 Features
 
-* 🧠 **Leitner System (7 Boxes)**
+- 🧠 **Leitner System (7 Boxes)**
+  - Cards move across 7 boxes based on performance
+  - Each box has increasing review intervals
 
-  * Cards move across 7 boxes based on performance
-  * Each box has increasing review intervals
+- ⏱️ **Spaced Repetition**
+  - Box 1 → Daily
+  - Box 2 → Every 2 days
+  - Box 3 → Every 4 days
+  - ...
+  - Box 7 → Mastered (no review)
 
-* ⏱️ **Spaced Repetition**
+- 📅 **Due Card Detection**
+  - Cards appear only when they are due
+  - Missed reviews remain available (no data loss)
 
-  * Box 1 → Daily
-  * Box 2 → Every 2 days
-  * Box 3 → Every 4 days
-  * ...
-  * Box 7 → Mastered (no review)
+- 🔄 **Study Mode**
+  - Session-based review (like Anki)
+  - Flip cards to reveal solutions
+  - Track progress with animated progress bar
 
-* 📅 **Due Card Detection**
+- 📊 **Dashboard**
+  - Overview of all 7 boxes
+  - Due cards highlighted
+  - Total card count
 
-  * Cards appear only when they are due
-  * Missed reviews remain available (no data loss)
-
-* 🔄 **Study Mode**
-
-  * Session-based review (like Anki)
-  * Flip cards to reveal solutions
-  * Track progress with animated progress bar
-
-* 📊 **Dashboard**
-
-  * Overview of all 7 boxes
-  * Due cards highlighted
-  * Total card count
-
-* 💾 **Offline Storage**
-
-  * Uses IndexedDB via `idb`
-  * No backend required
+- 💾 **Offline Storage**
+  - Uses IndexedDB via `idb`
+  - No backend required
 
 ---
 
@@ -64,39 +58,37 @@ It’s designed specifically for practicing and revising LeetCode problems effec
 
 ### Review Flow
 
-* ✅ **Correct Answer**
+- ✅ **Correct Answer**
+  - Move card to next box
+  - Schedule next review
 
-  * Move card to next box
-  * Schedule next review
-
-* ❌ **Wrong Answer**
-
-  * Reset card to Box 1
-  * Review again soon
+- ❌ **Wrong Answer**
+  - Reset card to Box 1
+  - Review again soon
 
 ---
 
 ### Scheduling Logic
 
 ```js
-intervalDays = 2^(box - 1)
+intervalDays = 2 ^ (box - 1);
 ```
 
 Cards are shown when:
 
 ```js
-now >= nextReviewDate
+now >= nextReview;
 ```
 
 ---
 
 ## 🏗️ Tech Stack
 
-* **React** (Frontend)
-* **IndexedDB (idb)** (Storage)
-* **React Router** (Navigation)
-* **Lucide Icons**
-* **CSS (Custom styling)**
+- **React** (Frontend)
+- **IndexedDB (idb)** (Storage)
+- **React Router** (Navigation)
+- **Lucide Icons**
+- **CSS (Custom styling)**
 
 ---
 
@@ -132,21 +124,21 @@ npm run dev
 
 ## 📌 Key Concepts Implemented
 
-* Derived vs persisted state separation
-* Session-based study flow (prevents skipping bugs)
-* Time normalization (start-of-day scheduling)
-* IndexedDB persistence
+- Derived vs persisted state separation
+- Session-based study flow (prevents skipping bugs)
+- Time normalization (start-of-day scheduling)
+- IndexedDB persistence
 
 ---
 
 ## 🧪 Future Improvements
 
-* ⏳ Daily review limits (like Anki)
-* 🔁 Undo last action
-* 📈 Stats & streak tracking
-* 🔍 Search + tag filtering
-* 🎨 Improved UI/animations
-* ☁️ Sync across devices
+- ⏳ Daily review limits (like Anki)
+- 🔁 Undo last action
+- 📈 Stats & streak tracking
+- 🔍 Search + tag filtering
+- 🎨 Improved UI/animations
+- ☁️ Sync across devices
 
 ---
 
@@ -156,10 +148,8 @@ Built as a focused learning tool for mastering problem-solving patterns through 
 
 LEETBOX solves that by:
 
-* Reinforcing patterns over time
-* Prioritizing weak areas
-* Making revision systematic
+- Reinforcing patterns over time
+- Prioritizing weak areas
+- Making revision systematic
 
 ---
-
-
