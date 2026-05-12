@@ -108,6 +108,7 @@ const Study = () => {
                       card={dueCards[currentIndex]}
                       showQuestionHeader={false}
                       title={dueCards[currentIndex].title}
+                      showLink
                     />
                   </div>
 
@@ -127,7 +128,7 @@ const Study = () => {
                   <div className="card-scrollable-content">
                     <CardSolutionContent
                       card={dueCards[currentIndex]}
-                      showLink
+                      showEditIcon
                     />
                   </div>
 

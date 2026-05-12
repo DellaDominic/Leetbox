@@ -1,21 +1,18 @@
 import './cardContent.css';
+import { Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { ExternalLink } from 'lucide-react';
+import { SquarePen } from 'lucide-react';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const CardSolutionContent = ({ card, showLink }) => {
+const CardSolutionContent = ({ card, showEditIcon }) => {
   return (
     <div className="card-solution">
       <div className="solution-header">
         <h1>Solution</h1>
-        {showLink && (
-          <a
-            className={`header-icon link ${!card.link ? 'disabled' : ''}`}
-            href={card.link}
-            target="_blank"
-          >
-            <ExternalLink />
-          </a>
+        {showEditIcon && (
+          <Link className="header-icon edit" to={`/edit/${card.id}`}>
+            <SquarePen />
+          </Link>
         )}
       </div>
       <h2>Intuition and Approach</h2>

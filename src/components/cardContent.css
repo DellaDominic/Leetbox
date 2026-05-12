@@ -72,6 +72,7 @@
   padding: 0 8px;
 }
 
-.solution-header {
+.solution-header,
+.header-title {
   display: flex;
 }
