@@ -78,7 +78,7 @@ export const formatDate = (date) => {
 export const getIsDue = (card) => {
   // Mastered cards should never appear
   if (card.box >= 7) return false;
-return true;
+
   const now = new Date();
 
   // ✅ Snap current time to start of today
